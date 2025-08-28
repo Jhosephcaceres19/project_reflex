@@ -79,7 +79,42 @@ def header():
             class_name="flex flex-row justify-between items-center w-full"
         ),
         class_name="p-6 w-full shadow-md"
+    ),
+
+def contentRigth():
+    return rx.box(
+        rx.el.div(
+            rx.link(
+                rx.icon("github"),
+                href="https://jhosephcaceres.vercel.app/",
+                gap="2",
+            ),
+            rx.link(
+                rx.icon("facebook")
+            ),
+            rx.link(
+                rx.icon("instagram")
+            ),
+            rx.link(
+                rx.icon("linkedin")
+            ),
+            rx.link(
+                rx.icon("twitch")
+            ),
+            rx.link(
+                rx.icon("twitter")
+            ), class_name="flex flex-row gap-4"
+        ), class_name="flex flex-row"
+    ),
+
+def image():
+    return rx.image(
+        src="https://images.squarespace-cdn.com/content/v1/6534a4725af2f11191967432/bd3a2456-d1d7-4b25-a7bb-b8b3ab7070b9/software-development-user-experience.png",
+        width="700px",
+        height="auto",
+        border_radius="50px"
     )
+
 
 
 def index() -> rx.Component:
@@ -88,37 +123,36 @@ def index() -> rx.Component:
         header(),
         rx.color_mode.button(position="top-right"),
         rx.vstack(
-            rx.heading("Hola Jhoseph", size="9"),
-            rx.text(
-                "este es tu pagina principal",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
-                size="5",
-            ),
-            rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
-            ),
-            rx.button("INGRESAR"),
-            rx.box(
-                rx.text("esto es un boton"),
-                rx.button("HACER CLICK", border_radius="15px", font_size="18px"),
-                my_button2(),
-            ),
-            my_div(),
-            roun_button(),
-            counter_increment(),
-
-            rx.box(
-                "holaa como estas",
-                class_name="text-4xl text-center text-red-200"
+           rx.el.div(
+    # Columna izquierda
+                rx.el.div(
+                rx.heading("Hi There,", size="9", class_name="text-4xl font-bold"),
+                rx.heading("I'm Jhoseph Caceres", class_name="text-3xl font-semibold"),
+                rx.text("I Am Into Web Develop!", class_name="text-lg text-blue-500"),
+                rx.link(
+                    rx.button("About Me", class_name="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"),
+                    href="https://jhosephcaceres.vercel.app/",
+                    is_external=True,
+                ),
+                contentRigth(),
+                class_name="flex flex-col gap-4 max-w-lg"
             ),
 
+    # Columna derecha (imagen)
+            rx.hstack(
+                image(),
+                class_name="flex justify-center items-center"
+            ),
 
+    # Contenedor principal
+                class_name=(
+                    "w-full h-[700px] flex flex-row items-center justify-around px-10 "
+                ),
+            ),
 
             spacing="5",
             # justify="start",
-            min_height="85vh",
+            min_height="100px",
         ),
     )
 
